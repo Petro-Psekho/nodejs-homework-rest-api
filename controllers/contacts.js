@@ -1,5 +1,9 @@
 const contacts = require("../models/contacts");
 
+const mongoose = require("mongoose");
+
+mongoose.connect();
+
 const { HttpError, ctrlWrapper } = require("../helpers");
 
 const getAllContacts = async (req, res) => {
