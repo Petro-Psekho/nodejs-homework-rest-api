@@ -1,17 +1,5 @@
 const contacts = require("../models/contacts");
 
-const mongoose = require("mongoose");
-
-const DB_HOST =
-  "mongodb+srv://petro:Smart5791@cluster0.lxdixxc.mongodb.net/contacts-db?retryWrites=true&w=majority";
-
-mongoose.set("strictQuery", true);
-
-mongoose
-  .connect(DB_HOST)
-  .then(() => console.log("=== Database connect succses ==="))
-  .catch((error) => console.log(error.message));
-
 const { HttpError, ctrlWrapper } = require("../helpers");
 
 const getAllContacts = async (req, res) => {
