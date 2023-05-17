@@ -9,10 +9,6 @@ const getAllContacts = async (req, res) => {
 
 const getContactById = async (req, res) => {
   const { contactId } = req.params;
-  // const result = await Contact.findOne(
-  //   { _id: contactId },
-  //   "-createdAt -updatedAt"
-  // );
   const result = await Contact.findById(contactId, "-createdAt -updatedAt");
   if (!result) {
     throw HttpError(404, "Not found");
@@ -43,6 +39,7 @@ const updateContactById = async (req, res) => {
 
 const updateStatusContact = async (req, res) => {
   const { contactId } = req.params;
+  console.log(req.body);
   const result = await Contact.findByIdAndUpdate(
     contactId,
     req.body,
@@ -54,6 +51,7 @@ const updateStatusContact = async (req, res) => {
   if (!result) {
     throw HttpError(404, "Not found");
   }
+
   res.json(result);
 };
 

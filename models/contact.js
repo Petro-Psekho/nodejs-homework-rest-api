@@ -29,10 +29,12 @@ const addSchema = Joi.object({
   email: Joi.string().required(),
   phone: Joi.string().required(),
   favorite: Joi.boolean(),
-});
+}).messages({ "any.required": "missing required name field" });
 
 const updateStatusContactSchema = Joi.object({
-  favorite: Joi.boolean().required(),
+  favorite: Joi.boolean()
+    .required()
+    .messages({ "any.required": "missing field favorite" }),
 });
 
 const schemas = {
