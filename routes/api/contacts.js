@@ -14,13 +14,13 @@ router.get("/:contactId", isValidId, ctrl.getContactById);
 
 router.post("/", validateBody(schemas.addSchema), ctrl.addContact);
 
-// router.delete("/:contactId", isValidId, ctrl.deleteContactById);
+router.put(
+  "/:contactId",
+  isValidId,
+  validateBody(schemas.addSchema),
+  ctrl.updateContactById
+);
 
-// router.put(
-//   "/:contactId",
-//   isValidId,
-//   validateBody(schemas.addSchema),
-//   ctrl.updateContactById
-// );
+// router.delete("/:contactId", isValidId, ctrl.deleteContactById);
 
 module.exports = router;

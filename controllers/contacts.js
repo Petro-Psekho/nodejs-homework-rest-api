@@ -25,6 +25,22 @@ const addContact = async (req, res) => {
   res.status(201).json(result);
 };
 
+const updateContactById = async (req, res) => {
+  const { contactId } = req.params;
+  const result = await Contact.findByIdAndUpdate(
+    contactId,
+    req.body,
+
+    {
+      new: true,
+    }
+  );
+  if (!result) {
+    throw HttpError(404, "Not found");
+  }
+  res.json(result);
+};
+
 // const deleteContactById = async (req, res) => {
 //   const { contactId } = req.params;
 //   const result = await contacts.removeContact(contactId);
@@ -36,19 +52,10 @@ const addContact = async (req, res) => {
 //   });
 // };
 
-// const updateContactById = async (req, res) => {
-//   const { contactId } = req.params;
-//   const result = await contacts.updateContact(contactId, req.body);
-//   if (!result) {
-//     throw HttpError(404, "Not found");
-//   }
-//   res.json(result);
-// };
-
 module.exports = {
   getAllContacts: ctrlWrapper(getAllContacts),
   getContactById: ctrlWrapper(getContactById),
   addContact: ctrlWrapper(addContact),
+  updateContactById: ctrlWrapper(updateContactById),
   // deleteContactById: ctrlWrapper(deleteContactById),
-  // updateContactById: ctrlWrapper(updateContactById),
 };
