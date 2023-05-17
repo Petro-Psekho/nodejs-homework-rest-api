@@ -28,6 +28,6 @@ router.patch(
   ctrl.updateStatusContact
 );
 
-// router.delete("/:contactId", isValidId, ctrl.deleteContactById);
+router.delete("/:contactId", isValidId, ctrl.deleteContactById);
 
 module.exports = router;
