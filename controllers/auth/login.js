@@ -15,13 +15,15 @@ const login = async (req, res, next) => {
   }
 
   const passwordCompare = await bcrypt.compare(password, user.password);
-  if (passwordCompare) {
+  if (!passwordCompare) {
     throw HttpError(401, 'email or password invalid');
   }
 
   const payload = {
     id: user._id,
   };
+
+  console.log(payload);
 
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '23h' });
 
