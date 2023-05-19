@@ -31,7 +31,7 @@ const userSchema = new Schema(
 userSchema.post("save", handleMongooseError);
 
 const registerSchema = Joi.object({
-  password: Joi.string().min().required(),
+  password: Joi.string().min(3).required(),
   email: Joi.string().pattern(emailRegexp).required(),
   subscription: Joi.string().required(),
 });
