@@ -3,7 +3,7 @@ const { HttpError, ctrlWrapper } = require('../../helpers');
 
 const updateStatusContact = async (req, res) => {
   const { contactId } = req.params;
-  console.log(req.body);
+
   const result = await Contact.findByIdAndUpdate(
     contactId,
     req.body,

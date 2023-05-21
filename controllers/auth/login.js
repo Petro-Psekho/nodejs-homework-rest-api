@@ -23,8 +23,6 @@ const login = async (req, res, next) => {
     id: user._id,
   };
 
-  console.log(payload);
-
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '23h' });
 
   res.json({
